@@ -1,0 +1,140 @@
+#+OPTIONS: reveal_title_slide:nil num:nil toc:nil
+#+REVEAL_ROOT: http://cdn.jsdelivr.net/reveal.js/3.0.0/
+#+REVEAL_PLUGINS: (highlight notes)
+#+REVEAL_HLEVEL: 2
+#+REVEAL_TRANS: none
+
+* Comments
+* personal opinion
+  - basis for discussion
+  - PEP 8
+  - clean code
+* comments are like code 
+  - needs to be maintained
+  - simpler == better
+  - should not contradict code
+  - try to not misspell / mistype
+  - should be in english
+* documentation vs comments
+  - class level and function level documentation
+    - high level overview
+    - examples how a class / function is used
+    - very important libraries
+  - inline comments
+    - weird things, hacks ...
+    - jira issue, stackoverflow link
+    - TODOs, Ticket Numbers
+        
+* better to write less comments
+  - because of syntax highlighting 
+  - comments are often glossed over / overlooked
+  - less comments less things to maintain
+  - need for comments might be a code smell
+
+* Examples
+
+
+#+BEGIN_SRC javascript
+x = x + 2 // increment by two
+#+END_SRC
+
+#+BEGIN_SRC javascript
+x = x + 2 // compromise for border
+#+END_SRC
+
+#+BEGIN_SRC javascript
+this.compromiseForBorder()
+#+END_SRC
+
+* Examples
+#+BEGIN_SRC javascript
+  // function foo() {
+  //   this.bar()
+  //   this.baz()
+  // }
+
+  function foo() {
+    this.foobar()
+  }
+#+END_SRC
+
+* Examples
+#+BEGIN_SRC javascript
+  function fooooo() {
+    this.bar()
+    this.baz()
+
+    ...
+
+    this.foobar()
+  } // fooooo end
+#+END_SRC
+
+* Examples
+#+BEGIN_SRC javascript
+  function sendEmail(input) {
+   /* INPUT VALIDATION & SANITATION START */
+   foo()
+   bar()
+   /* INPUT VALIDATION & SANITATION END */
+
+   /* EMAIL BUILDER START */
+   foo()
+   bar()
+   /* EMAIL BUILDER END */
+
+   email_foo()
+  }
+#+END_SRC
+
+* Examples
+#+BEGIN_SRC javascript
+  handleModalData(data) {
+    this.modalData = Object.assign({}, this.modalData, data)
+
+    // TODO: experimental
+    if (this.validateDealData(this.modalData)) {
+      // alert('Please add all required data.')
+    }
+  }
+#+END_SRC
+
+
+* Examples
+#+BEGIN_SRC javascript
+  get updatesAvailable() {
+    // TODO check if this uncommented code ist still needed
+    // if (!this.editCardData.globalFilesToDelete) {
+    //   return false
+    // }
+    // TODO use own getter here?
+    // return ((this.editCardData.globalFilesToDelete.length > 0) ||
+    // (this.globalFiles && this.card.card_global_upload_attachments &&
+    // this.globalFiles.length !== this.card.card_global_upload_attachments.length) ||
+    return this.hasRFIChanged(this.card.id)
+  }
+#+END_SRC
+
+
+* Examples
+#+BEGIN_SRC javascript
+/*
+                      _                      __ _
+  _____   _____ _ __ | |_    ___ ___  _ __  / _(_) __ _
+ / _ \ \ / / _ \ '_ \| __|  / __/ _ \| '_ \| |_| |/ _` |
+|  __/\ V /  __/ | | | |_  | (_| (_) | | | |  _| | (_| |
+ \___| \_/ \___|_| |_|\__|  \___\___/|_| |_|_| |_|\__, |
+                                                  |___/
+*/
+const ADD_DEAL_ELEMENT_EVENTS = [
+  'AfterPostCard',
+  'AfterPostRequestForInformationBroadCasting',
+  'AfterPostRequestForInformation',
+  'AfterPostResponse',
+  'AfterPostComment',
+  'AfterPostCardAttachment',
+  'AfterPostResponseAttachment',
+  'AfterCreateClientReadComment',
+  'AfterCreateClientSawResponseAttachment',
+]
+#+END_SRC
